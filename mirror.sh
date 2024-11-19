@@ -1,10 +1,18 @@
+shopt -s expand_aliases
+source .env
+
 note="# NOTE:\nTHIS REPO IS A **MIRROR** OF $1"
 
 tmp="/tmp/mirror_script/"
-mkdir "$tmp" && cd "$tmp"
+rm -rf "$tmp" && mkdir "$tmp" && cd "$tmp"
 
-git clone "$1" from
-git clone "$2" to
+echo "\n[*] Cloning source repository..."
+git clone "$1" from #|| echo "\n[x] Could not clone source repository" && exit
+echo "\n[*] Cloned source repository."
+
+echo "\n[*] Cloning destination repository..."
+git clone "$2" to #|| echo "[x] Could not clone destination repository" && exit
+echo "\n[*] Cloned destination repository."
 
 rm -rf from/.git/config
 mv to/.git/config from/.git/config
@@ -12,13 +20,13 @@ mv to/.git/config from/.git/config
 cd from
 
 set +o noclobber
-echo -e "$note\n$(cat README.md)" > README.md
-cat README.md
+echo "$note\n$(cat README.md)" > README.md
 set -o noclobber
 git add README.md
 
 git commit -m "mirror of: $1"
-git push --force
+git push --force #|| echo "\n[x] Could not force push to destination repository" && exit
+echo "\n[*] Pushed to destination repository."
 
 rm -rf "$tmp"
 

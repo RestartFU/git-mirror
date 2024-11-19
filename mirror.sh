@@ -1,4 +1,4 @@
-note="# NOTE:\nTHIS REPO HAS BEEN MOVED TO $1<br>THIS IS A **MIRROR**"
+note="# NOTE:\nTHIS REPO IS A **MIRROR** OF $1"
 
 tmp="/tmp/mirror_script/"
 mkdir "$tmp" && cd "$tmp"

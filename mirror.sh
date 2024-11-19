@@ -1,7 +1,7 @@
 shopt -s expand_aliases
 source .env
 
-note="# Mirror:\nThis repository is a <u>**mirror**</u> of [$1](this repository)"
+note="# Mirror:\nThis repository is a <u>**mirror**</u> of [this repository]($1)"
 
 tmp="/tmp/mirror_script/"
 rm -rf "$tmp" && mkdir "$tmp" && cd "$tmp"

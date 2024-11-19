@@ -1,7 +1,7 @@
 shopt -s expand_aliases
 source .env
 
-note="# Mirror:\nThis is a <ins>**mirror**</ins> of [this repository]($1)"
+note="# Mirror:\n⚠️ This is a [mirror](https://git.restartfu.com/restart/git-mirror) of [this repository]($1)"
 
 tmp="/tmp/mirror_script/"
 rm -rf "$tmp" && mkdir "$tmp" && cd "$tmp"
